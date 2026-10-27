@@ -1,0 +1,29 @@
+[project]
+name = "spotify-deezer-mcp"
+version = "0.1.0"
+description = "MCP server: build key/BPM/vibe-matched playlists from a Spotify seed track and export them to Deezer"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[cli]>=1.2,<2",
+    "spotifywebapipython",
+    "httpx",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+audio = ["librosa"]
+
+[project.scripts]
+spotify-deezer-mcp = "spotify_deezer_mcp.server:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
